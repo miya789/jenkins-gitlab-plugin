@@ -1,0 +1,65 @@
+jenkins:
+  systemMessage: "Welcome to Old Jenkins for Testing"
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: "admin"
+          password: "admin"
+        - id: "test"
+          password: "test"
+  authorizationStrategy:
+    globalMatrix:
+      permissions:
+        - "USER:Overall/Administer:admin"
+        - "USER:Agent/Build:test"
+        - "USER:Agent/Configure:test"
+        - "USER:Agent/Connect:test"
+        - "USER:Agent/Create:test"
+        - "USER:Agent/Delete:test"
+        - "USER:Agent/Disconnect:test"
+        - "USER:Credentials/Create:test"
+        - "USER:Credentials/Delete:test"
+        - "USER:Credentials/ManageDomains:test"
+        - "USER:Credentials/Update:test"
+        - "USER:Credentials/View:test"
+        - "USER:Job Config History/DeleteEntry:test"
+        - "USER:Job/Build:test"
+        - "USER:Job/Cancel:test"
+        - "USER:Job/Configure:test"
+        - "USER:Job/Create:test"
+        - "USER:Job/Delete:test"
+        - "USER:Job/Discover:test"
+        - "USER:Job/Move:test"
+        - "USER:Job/Read:test"
+        - "USER:Job/Workspace:test"
+        - "USER:Overall/Read:test"
+        - "USER:Run/Delete:test"
+        - "USER:Run/Replay:test"
+        - "USER:Run/Update:test"
+        - "USER:SCM/Tag:test"
+        - "USER:View/Configure:test"
+        - "USER:View/Create:test"
+        - "USER:View/Delete:test"
+        - "USER:View/Read:test"
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - gitLabApiTokenImpl:
+              scope: SYSTEM
+              id: gitlab_token
+              apiToken: "${BIND_TOKEN}"
+              description: "Gitlab Token"
+unclassified:
+  location:
+    url: "http://localhost:8080/"
+  gitlabconnectionconfig:
+    connections:
+      - apiTokenId: gitlab_token
+        clientBuilderId: "autodetect"
+        connectionTimeout: 20
+        ignoreCertificateErrors: true
+        name: "gitlab"
+        readTimeout: 10
+        url: "https://gitlab.com/"
