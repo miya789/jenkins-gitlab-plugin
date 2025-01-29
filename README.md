@@ -1,13 +1,13 @@
 # Jenkins GitLab Confirm
 
-## 目的
+## Purpose
 
-- `gitlab` プラグインで権限エラーが出る原因の条件を探る
-- 判明したら、Issue を起票する
+- Investigate the conditions that cause permission errors with the `gitlab` plugin.
+- If the cause is identified, create an issue.
 
-## ログ
+## Logs
 
-- イメージが古くてプラグインインストールでエラーが出たので、以下コマンドを実行
+- The container image was outdated, causing an error during plugin installation, so the following command was executed:
 
 ```bash
 $ docker pull jenkins/jenkins:lts-jdk11
@@ -38,7 +38,7 @@ What's Next?
 docker-compose up --build
 ```
 
-使い終わったら以下
+When finished, run the following command:
 
 ```bash
 docker rm jenkins-container
@@ -46,4 +46,4 @@ docker rm jenkins-container
 
 ## ToDo
 
-- Job DSL で Job も定義
+- Define jobs using Job DSL.
